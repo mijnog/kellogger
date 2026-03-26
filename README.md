@@ -30,4 +30,6 @@ SOFTWARE.
 
 Works on linux. On my Ubuntu keyboard input file is `/dev/input/event7`. This may be different on your system.
 
+Since this keylogger runs as a daemon you won't see errors on stderr. On Ubuntu, you can use `journalctl -t kelogger` to find error messages, or `journalctl -t kelogger -f` to see them appear in real time.
+
 
