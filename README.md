@@ -34,11 +34,7 @@ Since this keylogger runs as a daemon you won't see errors on stderr. On Ubuntu,
 
 #### Usage
 
-```
-make
-```
-
-Just run `./kellogger` as root or `./kellogger <path-to-event-file>`.
+First run `make`, then just run `./kellogger` as root or `./kellogger <path-to-event-file>`.
 
 Key logs are stored in `/tmp/kellogs.txt`
 
