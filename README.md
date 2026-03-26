@@ -31,7 +31,7 @@ SOFTWARE.
 
 # Kellogger
 
-![Kellog's Original Cornflakes Logo](media_1b2558f258e08fff37b0b39d9929ad254e4702571.png)
+![Kellog's Original Cornflakes Logo](kellogger.png)
 
 Works on linux. On my Ubuntu keyboard input file is `/dev/input/event7`. This may be different on your system.
 
