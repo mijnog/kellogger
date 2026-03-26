@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 
 TARGET = kelogger
-SRCS = kelogger.c keycodes.c
+SRCS = kelogger.c keycodes.c daemonize.c
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)

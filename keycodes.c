@@ -54,9 +54,14 @@ const char *keycode_to_str(int code) {
         case 52:  return ".";
         case 53:  return "/";
         case 54:  return "[RSHIFT]";
+        case 55: return "*";   // numpad *
         case 56:  return "[ALT]";
         case 57:  return "[SPACE]";
         case 58:  return "[CAPSLOCK]";
+        case 74: return "-";   // numpad 
+        case 78: return "+";   // numpad +
+        case 96: return "[ENTER]";  // numpad enter
+        case 98: return "/";   // numpad /
         case 103: return "[UP]";
         case 105: return "[LEFT]";
         case 106: return "[RIGHT]";
@@ -91,6 +96,8 @@ const char *keycode_to_str_shifted(int code) {
         case 23: return "I";
         case 24: return "O";
         case 25: return "P";
+        case 26: return "{";   // [ shifted
+        case 27: return "}";   // ] shifted
         case 30: return "A";
         case 31: return "S";
         case 32: return "D";
@@ -102,7 +109,7 @@ const char *keycode_to_str_shifted(int code) {
         case 38: return "L";
         case 39: return ":";
         case 40: return "\"";
-        case 44: return "Z";
+        case 43: return "|";   // \ shifted
         case 45: return "X";
         case 46: return "C";
         case 47: return "V";
