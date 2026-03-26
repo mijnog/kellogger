@@ -12,7 +12,8 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-EDUCATIONAL USE DISCLAIMER:
+$${\color{red}EDUCATIONAL USE DISCLAIMER:}$$
+
 This software was created strictly for educational purposes to demonstrate
 Linux input event handling and low-level C programming concepts. It is intended
 to be used only on systems you own or have explicit written permission to
